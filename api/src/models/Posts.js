@@ -5,7 +5,7 @@ class Post extends Model {}
 Post.init({
 
     id_author: { type: DataTypes.INTEGER, allowNull: false },
-    id_category: { type: DataTypes.STRING, allowNull: false },
+    id_category: { type: DataTypes.INTEGER, allowNull: false },
     title: { type: DataTypes.STRING, allowNull: false },
     excerpt: { type: DataTypes.TEXT, allowNull: false },
     thumbnail: { type: DataTypes.STRING, allowNull: false },
