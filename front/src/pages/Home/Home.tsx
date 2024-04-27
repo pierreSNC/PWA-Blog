@@ -1,22 +1,35 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import Card from "../../components/Card/Card";
 
-interface HomeProps {
+const Home: React.FC = () => {
 
-}
-
-const Home: React.FC<HomeProps> = () => {
+    const [posts, setPosts] = useState<any[]>([]);
 
     useEffect(() => {
         axios.get('http://localhost:3000/posts')
             .then(res => {
-                console.log(res.data)
+                setPosts(res.data);
             })
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        console.log(posts);
+    }, [posts]);
 
     return (
         <div>
-
+            {posts ? posts.map(post => (
+                <section className={'m-4'} key={post.id}>
+                    <Card
+                        thumbnail={post.thumbnail}
+                        category={post.id_category}
+                        title={post.title}
+                        excerpt={post.excerpt}
+                        time_read={post.time_read}
+                    />
+                </section>
+            )) : ''}
         </div>
     );
 };
