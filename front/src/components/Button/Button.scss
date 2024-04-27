@@ -1,0 +1,33 @@
+.button {
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #151519;
+  cursor: pointer;
+
+  &.filled {
+    height: 48px;
+    width: 104px;
+    border-radius: 5px;
+    border: solid 1px #151519;
+    transition: .2s ease-in-out;
+
+    &:hover {
+      background: #151519;
+      color: #ffffff;
+    }
+  }
+
+  &.transparent {
+    border : none;
+
+    &:hover {
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}
