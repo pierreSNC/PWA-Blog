@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './Card.scss';
 import CategoryTag from "../CategoryTag/CategoryTag";
 import Button from "../Button/Button";
 
 interface CardProps {
+    id: number
     thumbnail: string,
     category: string,
     title: string,
@@ -11,7 +14,15 @@ interface CardProps {
     time_read: string
 }
 
-const Card: React.FC<CardProps> = ({thumbnail, category, title, excerpt, time_read}) => {
+const Card: React.FC<CardProps> = ({id, thumbnail, category, title, excerpt, time_read}) => {
+
+    const navigate = useNavigate();
+
+    const handleClick = (id: number) => {
+        console.log('Button clicked!');
+        navigate(`/post/${id}`);
+    };
+
     return (
         <article className={'card flex flex-col space-y-4'}>
             <div>
@@ -26,7 +37,7 @@ const Card: React.FC<CardProps> = ({thumbnail, category, title, excerpt, time_re
                 <p>{excerpt}</p>
             </div>
             <div>
-                <Button content={'Read more'} icon={true} filled={false} />
+                <Button content={'Read more'} icon={true} filled={false} onClick={() => handleClick(id)} />
             </div>
         </article>
     );

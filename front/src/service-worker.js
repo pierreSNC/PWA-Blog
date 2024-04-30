@@ -1,6 +1,6 @@
 import {precacheAndRoute} from "workbox-precaching";
 
-const VERSION = 'V2';
+const VERSION = 'V3';
 
 /* eslint-disable-next-line no-restricted-globals */
 precacheAndRoute(self.__WB_MANIFEST);
@@ -22,11 +22,13 @@ self.addEventListener("push", e => {
     const data = e.data.json();
     console.log("Push Recieved...");
 
+    console.log(data)
     /* eslint-disable-next-line no-restricted-globals */
     self.registration.showNotification(data.title, {
         body: data.body,
         icon: "http://image.ibb.co/frYOFd/tmlogo.png",
         data: {
+            // url:'https://example.com'
             url: data.url
         }
     });
@@ -36,6 +38,7 @@ self.addEventListener("push", e => {
 self.addEventListener("notificationclick", (event) => {
     console.log("On notification click:");
 
+    console.log(event)
     event.waitUntil(
         /* eslint-disable-next-line no-restricted-globals */
         self.clients

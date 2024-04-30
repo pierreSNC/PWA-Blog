@@ -28,7 +28,7 @@ module.exports = (app) => {
         const { id_author, id_category, title, excerpt, thumbnail, time_read, is_popular } = req.body;
 
         try {
-            await Posts.create({
+            const post = await Posts.create({
                 id_author,
                 id_category,
                 title,
@@ -38,6 +38,7 @@ module.exports = (app) => {
                 is_popular
             });
 
+            const id_post = post.id;
             const subscriptions = await Subscriptions.findAll();
             const author = await Author.findByPk(id_author);
 
@@ -59,12 +60,11 @@ module.exports = (app) => {
 
             decodedSubscriptions.forEach(subscription => {
 
+                console.log(`/post/${id_post}`);
                 const payload = JSON.stringify({
                     title:  author_name + " a publié nouvel article ",
                     body: title,
-                    data: {
-                        url: '/post/2'
-                    }
+                    url: `http://localhost:49453/post/${id_post}`
                 });
                 webpush
                     .sendNotification(subscription, payload)

@@ -19,17 +19,20 @@ const Home: React.FC = () => {
 
     return (
         <div>
-            {posts ? posts.map(post => (
-                <section className={'m-4'} key={post.id}>
-                    <Card
-                        thumbnail={post.thumbnail}
-                        category={post.id_category}
-                        title={post.title}
-                        excerpt={post.excerpt}
-                        time_read={post.time_read}
-                    />
-                </section>
-            )) : ''}
+            <section>
+                {posts ? posts.map(post => (
+                    <div className={'m-4'} key={post.id}>
+                        <Card
+                            id={post.id}
+                            thumbnail={post.thumbnail}
+                            category={post.id_category}
+                            title={post.title}
+                            excerpt={post.excerpt}
+                            time_read={post.time_read}
+                        />
+                    </div>
+                )) : ''}
+            </section>
         </div>
     );
 };

@@ -1,14 +1,19 @@
 import React from 'react';
 import './App.scss';
-import CategoryTag from "./components/CategoryTag/CategoryTag";
-import Button from "./components/Button/Button";
-import Card from "./components/Card/Card";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Home from "./pages/Home/Home";
+import PostDetail from "./pages/PostDetail/PostDetail";
 
 function App() {
   return (
     <div className="App">
-        <Home />
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/post/:id" element={<PostDetail />} />
+            </Routes>
+        </Router>
     </div>
   );
 }

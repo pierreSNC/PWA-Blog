@@ -6,15 +6,16 @@ import './Button.scss';
 interface ButtonProps {
     content: string,
     icon: boolean,
-    filled: boolean
+    filled: boolean,
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const Button: React.FC<ButtonProps> = ({content, icon, filled}) => {
+const Button: React.FC<ButtonProps> = ({content, icon, filled, onClick}) => {
 
     const buttonClass = `button ${filled ? 'filled' : 'transparent'}`;
 
     return (
-        <button className={buttonClass}>
+        <button className={buttonClass} onClick={onClick}>
             <span>{content}</span>
             {icon ? (
                 <span>
