@@ -1,5 +1,6 @@
 const Posts = require('../models/Posts');
 const Subscriptions = require('../models/Subscriptions');
+const Author = require('../models/Author');
 const webpush = require('web-push');
 
 
@@ -38,6 +39,18 @@ module.exports = (app) => {
             });
 
             const subscriptions = await Subscriptions.findAll();
+            const author = await Author.findByPk(id_author);
+
+            let author_name = 'Quelqu\'un';
+            if (author) {
+                const firstname = author.dataValues.firstname;
+                const lastname = author.dataValues.lastname;
+                author_name = firstname + " " + lastname;
+                console.log('Author Name:', firstname, lastname);
+            } else {
+                console.log('No author found with ID:', id_author);
+            }
+
 
             const decodedSubscriptions = subscriptions.map(subscription => {
                 const firstDecode = JSON.parse(subscription.subscription_json);
@@ -46,14 +59,18 @@ module.exports = (app) => {
 
             decodedSubscriptions.forEach(subscription => {
 
-
-                const payload = JSON.stringify({ title: "Push Test" });
-
+                const payload = JSON.stringify({
+                    title:  author_name + " a publié nouvel article ",
+                    body: title,
+                    data: {
+                        url: '/post/2'
+                    }
+                });
                 webpush
                     .sendNotification(subscription, payload)
                     .catch(err => console.error(err));
+            });
 
-            })
             res.json('notification send!');
         } catch (error) {
             console.error('Erreur lors de la création du post ou de la récupération des abonnements:', error);

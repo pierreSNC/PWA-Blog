@@ -2,7 +2,7 @@ const sequelize = require('./database');
 // require('./models/Posts');
 // require('./models/Category');
 // require('./models/Author');
-require('./models/Subscriptions');
+// require('./models/Subscriptions');
 
 async function syncModels() {
     try {
