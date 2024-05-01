@@ -10,6 +10,7 @@ const CACHES_ASSETS = [
     '/favicon.ico',
     '/logo192.png',
     'http://localhost:3000/posts',
+    'https://pixelgrade.com/wp-content/uploads/2020/05/Bistro-La-Noi-Website.jpg'
 
     // Ajoutez d'autres ressources et routes nécessaires
 ];
@@ -45,42 +46,31 @@ self.addEventListener('activate', event => {
 /* eslint-disable-next-line no-restricted-globals */
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request)
-            .then(cachedResponse => {
-                if (cachedResponse) {
-                    return cachedResponse;
-                }
+        caches.match(event.request).then(cachedResponse => {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
 
+            let url = event.request.url;
+            let imgRegex = /\.(jpg|jpeg|png)$/i; // Regex pour capturer les extensions jpg, jpeg, png
 
-                // http://localhost:3000/posts
-
-                let img = 'https://pixelgrade.com/wp-content/uploads/2020/05/Bistro-La-Noi-Website.jpg';
-                caches.open(PREFIX)
-                    .then(cache => {
-                        console.log('Opened cache');
-                        console.log('test')
-                        console.log(event.request.url);
-                        return cache.add(img);
-                    })
-                    .catch(error => {
-                        console.error('Failed to open cache', error);
-                    })
-                return fetch(event.request);
-                // .catch(() => {
-                //     console.log(event.request.mode);
-                //     if (event.request.mode === 'navigate' || event.request.headers.get("accept").includes("text/html")) {
-                //         return caches.match('/');
-                //     } else if (event.request.destination === 'style') {
-                //         return caches.match('/static/css/main.chunk.css');
-                //     } else if (event.request.destination === 'script') {
-                //         return caches.match('/static/js/main.chunk.js');
-                //     }
-                //     // Retourne une réponse 404 générique pour les autres cas non gérés
-                //     return new Response('Resource not available', { status: 404 });
-                // });
-            })
+            if (imgRegex.test(url)) { // Vérifie si l'URL correspond à une image
+                return caches.open(PREFIX).then(cache => {
+                    console.log('ici');
+                    cache.add(url).then(() => {
+                        console.log('Image ajoutée au cache:', url);
+                    }).catch(error => {
+                        console.error('Échec de mise en cache:', url, error);
+                    });
+                    return fetch(event.request); // Fait la requête réseau et retourne la réponse
+                });
+            } else {
+                return fetch(event.request); // Pour les non-images, fait juste la requête réseau
+            }
+        })
     );
 });
+
 
 /* eslint-disable-next-line no-restricted-globals */
 self.addEventListener("push", e => {

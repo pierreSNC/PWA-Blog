@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Card from "../../components/Card/Card";
+import Header from "../../components/Header/Header";
+import Title from "../../components/Title/Title";
+import Newsletter from "../../components/Newsletter/Newsletter";
 
 const Home: React.FC = () => {
 
@@ -14,25 +17,31 @@ const Home: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        console.log(posts);
+        // console.log(posts);
     }, [posts]);
 
     return (
+
         <div>
-            <section>
-                {posts ? posts.map(post => (
-                    <div className={'m-4'} key={post.id}>
-                        <Card
-                            id={post.id}
-                            thumbnail={post.thumbnail}
-                            category={post.id_category}
-                            title={post.title}
-                            excerpt={post.excerpt}
-                            time_read={post.time_read}
-                        />
-                    </div>
-                )) : ''}
-            </section>
+            <Header />
+            <Title />
+            <Newsletter />
+            <div>
+                <section>
+                    {posts ? posts.map(post => (
+                        <div className={'m-4'} key={post.id}>
+                            <Card
+                                id={post.id}
+                                thumbnail={post.thumbnail}
+                                category={post.id_category}
+                                title={post.title}
+                                excerpt={post.excerpt}
+                                time_read={post.time_read}
+                            />
+                        </div>
+                    )) : ''}
+                </section>
+            </div>
         </div>
     );
 };

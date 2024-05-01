@@ -5,7 +5,7 @@ import './Button.scss';
 
 interface ButtonProps {
     content: string,
-    icon: boolean,
+    icon?: boolean,
     filled: boolean,
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
