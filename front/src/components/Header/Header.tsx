@@ -43,7 +43,7 @@ const Header = () => {
                             <Link to="/popular">Popular</Link>
                         </li>
                         <li className={'li-history'}>
-                            <Link to="/">All Posts</Link>
+                            <Link to="/all-post">All Posts</Link>
                         </li>
                         <li className={'li-history'}>
                             <Button content={'Get started'} filled={true} />
