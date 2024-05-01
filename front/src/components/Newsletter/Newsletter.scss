@@ -10,5 +10,10 @@
     width: 345px;
     padding: 15px;
     border-radius: 5px;
+    color: #151519;
+
+    &:focus {
+      outline: none;
+    }
   }
 }

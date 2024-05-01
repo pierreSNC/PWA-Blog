@@ -1,22 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 
 import './Header.scss';
 import Button from "../Button/Button";
 
-
-
 const Header = () => {
     const [showMenu, setShowMenu] = useState(true);
-
-
-
-
-
-
-
+    const logo = process.env.PUBLIC_URL + '/img/footer-light.png';
     const toggleMenu = () => setShowMenu(!showMenu);
 
     useEffect(() => {
@@ -24,9 +14,6 @@ const Header = () => {
             setShowMenu(false);
         }
     }, []);
-
-
-
 
     return (
         <header>
@@ -42,7 +29,9 @@ const Header = () => {
 
                     <div className={'item'}>
                         <li className={'logo'}>
-                            <Link to="/">Saphiir.</Link>
+                            <Link to="/">
+                                <img src={logo} alt="" className={'w-[130px] h-auto'}/>
+                            </Link>
                         </li>
                     </div>
 
@@ -51,7 +40,7 @@ const Header = () => {
                             <Link to="/">Home</Link>
                         </li>
                         <li className={'li-expertise'}>
-                            <Link to="/">Popular</Link>
+                            <Link to="/popular">Popular</Link>
                         </li>
                         <li className={'li-history'}>
                             <Link to="/">All Posts</Link>

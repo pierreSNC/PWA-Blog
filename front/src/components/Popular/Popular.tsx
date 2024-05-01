@@ -9,7 +9,8 @@ const Popular: React.FC = () => {
     useEffect(() => {
         axios.get('http://localhost:3000/posts')
             .then(res => {
-                setPosts(res.data);
+                const popularPosts = res.data.filter((post: any) => post.is_popular);
+                setPosts(popularPosts);
             })
     }, []);
     return (
