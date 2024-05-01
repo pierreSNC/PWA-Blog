@@ -25,12 +25,12 @@ const Card: React.FC<CardProps> = ({id, thumbnail, category, title, excerpt, tim
 
     return (
         <article className={'card flex flex-col space-y-4'}>
-            <div>
-                <img src={thumbnail} alt="" className={'rounded-md'}/>
+            <div className={'h-[300px]'}>
+                <img src={thumbnail} alt="" className={'rounded-md object-cover h-full w-full'}/>
             </div>
             <div className={'flex items-center gap-x-4'}>
                 <CategoryTag content={category} />
-                <span>{time_read} min read</span>
+                <span className={'font-semibold'}>{time_read} min read</span>
             </div>
             <div>
                 <h3>{title}</h3>
