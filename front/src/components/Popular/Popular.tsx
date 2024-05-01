@@ -13,7 +13,7 @@ const Popular: React.FC = () => {
             })
     }, []);
     return (
-        <section className={'mx-[50px] mt-[112px]'}>
+        <section className={'mx-[50px] my-[112px]'}>
             <div className={'flex flex-col gap-y-8 items-start md:flex-row md:items-end justify-between mb-[80px]'}>
                 <div>
                     <h2 className={'font-bold mb-2 md:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl'}>Popular</h2>

@@ -22,6 +22,17 @@
     }
   }
 
+  &.dark {
+    background: none;
+    border: solid 1px #ffffff;
+    color: #ffffff;
+
+    &:hover {
+      background: #ffffff;
+      color: #151519;
+    }
+  }
+
   &.transparent {
     border : none;
 

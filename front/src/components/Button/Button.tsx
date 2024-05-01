@@ -7,12 +7,13 @@ interface ButtonProps {
     content: string,
     icon?: boolean,
     filled: boolean,
+    dark?: boolean
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const Button: React.FC<ButtonProps> = ({content, icon, filled, onClick}) => {
+const Button: React.FC<ButtonProps> = ({content, icon,dark, filled, onClick}) => {
 
-    const buttonClass = `button ${filled ? 'filled' : 'transparent'}`;
+    const buttonClass = `button ${filled ? 'filled' : 'transparent'} ${dark ? 'dark' : 'light'}`;
 
     return (
         <button className={buttonClass} onClick={onClick}>
