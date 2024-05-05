@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
 import axios from "axios";
 
@@ -10,11 +9,26 @@ const PopularPage: React.FC = () => {
 
     useEffect(() => {
         axios.get('http://localhost:3000/posts')
-            .then(res => {
-                const popularPosts = res.data.filter((post: any) => post.is_popular);
-                setPosts(popularPosts);
+            .then(async (res) => {
+                const popularPosts = res.data;
+
+                const postsWithCategoryNames = await Promise.all(popularPosts.map(async (post: any) => {
+                    if (post.id_category) {
+                        // Récupérer les détails de la catégorie pour chaque post
+                        const categoryRes = await axios.get(`http://localhost:3000/category/${post.id_category}`);
+                        return {
+                            ...post,
+                            categoryName: categoryRes.data.name
+                        };
+                    }
+                    return post;
+                }));
+
+                setPosts(postsWithCategoryNames);
             })
+            .catch(error => console.error('Error fetching posts:', error));
     }, []);
+
     return (
         <div>
             <Header />
@@ -31,7 +45,7 @@ const PopularPage: React.FC = () => {
                             <Card
                                 id={post.id}
                                 thumbnail={post.thumbnail}
-                                category={post.id_category}
+                                category={post.categoryName}
                                 title={post.title}
                                 excerpt={post.excerpt}
                                 time_read={post.time_read}

@@ -6,8 +6,23 @@ import Button from "../Button/Button";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(true);
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+
     const logo = process.env.PUBLIC_URL + '/img/footer-light.png';
     const toggleMenu = () => setShowMenu(!showMenu);
+
+    useEffect(() => {
+        const setOnline = () => setIsOnline(true);
+        const setOffline = () => setIsOnline(false);
+
+        window.addEventListener('online', setOnline);
+        window.addEventListener('offline', setOffline);
+
+        return () => {
+            window.removeEventListener('online', setOnline);
+            window.removeEventListener('offline', setOffline);
+        };
+    }, []);
 
     useEffect(() => {
         if (showMenu) {
@@ -16,7 +31,7 @@ const Header = () => {
     }, []);
 
     return (
-        <header>
+        <header  style={{ top: isOnline ? '0' : '5vh' }}>
             <nav>
                 <ul>
                     <div className={`item ${!showMenu ? '' : 'nav-open'}`}>
