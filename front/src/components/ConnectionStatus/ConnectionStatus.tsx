@@ -31,7 +31,7 @@ const ConnectionStatus: React.FC = () => {
                 <section className={'connection__status'}>
                     <div className={'flex gap-x-4 items-center'}>
                         <FontAwesomeIcon icon={faTriangleExclamation} className={'text-xl sm:text-3xl'} />
-                        <p className={'text-xs sm:text-sm'}>Vous êtes hors-ligne.</p>
+                        <p className={'text-xs sm:text-sm'}>You are offline.</p>
                     </div>
                 </section>
             ) : ''}
