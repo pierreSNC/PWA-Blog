@@ -8,6 +8,7 @@ import PopularPage from "./pages/PopularPage/PopularPage";
 import AllPost from "./pages/AllPost/AllPost";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import ConnectionStatus from "./components/ConnectionStatus/ConnectionStatus";
+import AddPost from "./pages/AddPost/AddPost";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/post/:id" element={<PostDetail />} />
                 <Route path="/popular" element={<PopularPage />} />
                 <Route path="/all-post" element={<AllPost />} />
+                <Route path="/add-post" element={<AddPost />} />
             </Routes>
         </Router>
     </div>

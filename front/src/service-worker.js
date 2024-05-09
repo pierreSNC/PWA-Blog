@@ -26,10 +26,9 @@ const CACHES_ASSETS = [
     'https://pixelgrade.com/wp-content/uploads/2020/05/Bistro-La-Noi-Website.jpg',
     'https://images.squarespace-cdn.com/content/v1/5e1faf831e0b0b52a7c997b4/1603307748935-P5YU2P75JDDGMLTN65RH/Jennifer+Estacio+Flipp+Family',
     'https://pixelgrade.com/wp-content/uploads/2020/02/Creating-true-fluid-web-typography-to-improve-our-processes.jpg',
-    // 'https://assets-global.website-files.com/649d7588109f54a3920257c1/64bf7c2f97b2db57fab04c32_5fda0332fe4b4b144dd329b8_modern-man-working-remotely-on-a-computer-from-hom-KCVNRZB-min.jpeg',
-    // 'https://ideat.fr/wp-content/thumbnails/uploads/sites/3/2023/02/96-singulier_octobre_2022-24102022-05143-enhanced-2-scaled-tt-width-768-height-492-crop-1-bgcolor-ffffff.jpg',
-    // 'https://www.buchmesse.de/files/styles/crop_image/public/media/image/MHillmer-JKlaus_%C2%A9Gregor-Thorand_catchingsmiles-net_2000.jpg?itok=Ev3OYV4x'
-
+    "https://starter.pixelgrade.com/julialt/wp-content/uploads/sites/6/2021/11/julia_about_photo_2.png",
+    "https://starter.pixelgrade.com/julia-lt/wp-content/uploads/sites/6/2022/04/26197193421_c89aefafb5_o.jpg",
+    "https://starter.pixelgrade.com/julia-lt/wp-content/uploads/sites/6/2022/04/26170990602_781f7fcea0_o.jpg"
 ];
 
 /* eslint-disable-next-line no-restricted-globals */

@@ -1,0 +1,57 @@
+#add__post {
+
+  form {
+    border: dashed 1px #151519;
+    padding: 40px;
+    border-radius: 5px;
+
+    label {
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+  }
+  select {
+    border: solid 1px #151519;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input {
+    border: solid 1px #151519;
+    padding-left: 15px;
+    color: #151519;
+    background: #ffffff;
+    height: 48px;
+
+    &:focus {
+      outline: none;
+    }
+    &[type=number] {
+
+      &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+        opacity: 1;
+
+      }
+    }
+  }
+
+  textarea {
+    border: solid 1px #151519;
+    height: 250px;
+    padding: 15px 0 0 15px;
+    resize: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    margin: 50px auto 0 auto;
+  }
+
+
+
+}
