@@ -15,11 +15,11 @@ const AddPost: React.FC = () => {
     const [timeRead, setTimeRead] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:3000/authors').then(res => {
+        axios.get(`${process.env.REACT_APP_API_URL}authors`).then(res => {
             setAuthors(res.data);
         });
 
-        axios.get('http://localhost:3000/categories').then(res => {
+        axios.get(`${process.env.REACT_APP_API_URL}categories`).then(res => {
             setCategories(res.data);
         });
     }, []);
@@ -52,7 +52,7 @@ const AddPost: React.FC = () => {
             is_popular: false
 
         };
-        axios.post('http://localhost:3000/post', postData)
+        axios.post(`${process.env.REACT_APP_API_URL}post`, postData)
             .then(response => {
                 console.log('Post added successfully:', response.data);
                 setTitle('');

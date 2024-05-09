@@ -17,17 +17,17 @@ const PostDetail: React.FC = () => {
     const [author, setAuthor] = useState<any>([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/post/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}post/${id}`)
             .then(res => {
                 setPost(res.data);
                 if (res.data.id_author) {
-                    axios.get(`http://localhost:3000/author/${res.data.id_author}`)
+                    axios.get(`${process.env.REACT_APP_API_URL}author/${res.data.id_author}`)
                         .then(authorRes => {
                             setAuthor(authorRes.data);
                         });
                 }
                 if (res.data.id_category) {
-                    axios.get(`http://localhost:3000/category/${res.data.id_category}`)
+                    axios.get(`${process.env.REACT_APP_API_URL}category/${res.data.id_category}`)
                         .then(categoryRes => {
                             setCategory(categoryRes.data);
                         });

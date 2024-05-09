@@ -8,14 +8,12 @@ const PopularPage: React.FC = () => {
     const [posts, setPosts] = useState<any[]>([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/posts')
+        axios.get(`${process.env.REACT_APP_API_URL}posts`)
             .then(async (res) => {
-                const popularPosts = res.data;
-
+                const popularPosts = res.data.filter((post: any) => post.is_popular);
                 const postsWithCategoryNames = await Promise.all(popularPosts.map(async (post: any) => {
                     if (post.id_category) {
-                        // Récupérer les détails de la catégorie pour chaque post
-                        const categoryRes = await axios.get(`http://localhost:3000/category/${post.id_category}`);
+                        const categoryRes = await axios.get(`${process.env.REACT_APP_API_URL}category/${post.id_category}`);
                         return {
                             ...post,
                             categoryName: categoryRes.data.name

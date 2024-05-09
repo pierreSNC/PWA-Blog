@@ -5,7 +5,6 @@ import Footer from "../../components/Footer/Footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
-import Button from "../../components/Button/Button";
 
 const AllPost: React.FC = () => {
     const [posts, setPosts] = useState<any[]>([]);
@@ -25,13 +24,13 @@ const AllPost: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/posts')
+        axios.get(`${process.env.REACT_APP_API_URL}posts`)
             .then(async (res) => {
                 const allPosts = res.data;
 
                 const postsWithCategoryNames = await Promise.all(allPosts.map(async (post: any) => {
                     if (post.id_category) {
-                        const categoryRes = await axios.get(`http://localhost:3000/category/${post.id_category}`);
+                        const categoryRes = await axios.get(`${process.env.REACT_APP_API_URL}category/${post.id_category}`);
                         return {
                             ...post,
                             categoryName: categoryRes.data.name
