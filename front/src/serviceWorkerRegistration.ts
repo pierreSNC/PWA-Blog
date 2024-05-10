@@ -59,7 +59,7 @@ const checkSubscription = async () => {
 
 const subscribeUser = async (registration:any) => {
 
-  const vapidPublicKey = 'BEaRqXDrifbTXtEIMTasa0u3XpL6FDUORDt8a--5qLIu_bsMg90R-QkiviIJmjCF-LHQrXJSzHVoTq5UE_vwJqg';
+  const vapidPublicKey = `${process.env.REACT_APP_PUBLIC_KEY}`;
   const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
 
   try {

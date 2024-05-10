@@ -68,33 +68,7 @@ self.addEventListener('fetch', event => {
                     return cachedResponse;
                 }
 
-
-                // http://localhost:3000/posts
-
-                // let img = 'https://pixelgrade.com/wp-content/uploads/2020/05/Bistro-La-Noi-Website.jpg';
-                // caches.open(PREFIX)
-                //     .then(cache => {
-                //         console.log('Opened cache');
-                //         console.log('test')
-                //         console.log(event.request.url);
-                //         // return cache.add(img);
-                //     })
-                //     .catch(error => {
-                //         console.error('Failed to open cache', error);
-                //     })
                 return fetch(event.request);
-                // .catch(() => {
-                //     console.log(event.request.mode);
-                //     if (event.request.mode === 'navigate' || event.request.headers.get("accept").includes("text/html")) {
-                //         return caches.match('/');
-                //     } else if (event.request.destination === 'style') {
-                //         return caches.match('/static/css/main.chunk.css');
-                //     } else if (event.request.destination === 'script') {
-                //         return caches.match('/static/js/main.chunk.js');
-                //     }
-                //     // Retourne une réponse 404 générique pour les autres cas non gérés
-                //     return new Response('Resource not available', { status: 404 });
-                // });
             })
     );
 });
@@ -107,7 +81,7 @@ self.addEventListener("push", e => {
     /* eslint-disable-next-line no-restricted-globals */
     self.registration.showNotification(data.title, {
         body: data.body,
-        icon: "http://image.ibb.co/frYOFd/tmlogo.png",
+        icon: "http://45.155.169.51/PWA-Blog/logo192.png",
         data: { url: data.url }
     });
 });

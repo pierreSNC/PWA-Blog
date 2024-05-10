@@ -4,6 +4,7 @@ import {faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import CategoryTag from "../CategoryTag/CategoryTag";
 import Button from "../Button/Button";
+import {useNavigate} from "react-router-dom";
 
 const LastPostsSection: React.FC = () => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -37,7 +38,14 @@ const LastPostsSection: React.FC = () => {
             }));
             setLastPosts(postsWithCategoryNames);
         });
-    }, [])
+    }, []);
+
+    const navigate = useNavigate();
+
+    const handleClick = (id: number) => {
+        console.log('Button clicked!');
+        navigate(`/post/${id}`);
+    };
 
     return (
         <section className={'mx-[50px] my-[112px]'}>
@@ -64,7 +72,7 @@ const LastPostsSection: React.FC = () => {
                                         <div className={'mb-2'}>
                                             <p>{post.excerpt}</p>
                                         </div>
-                                        <Button content={'Read more'} filled={false} icon={true} />
+                                        <Button content={'Read more'} filled={false} icon={true} onClick={() => handleClick(post.id)} />
                                     </article>
                                 ) : (
                                     <article className={'flex gap-x-4 items-center'}>
@@ -77,7 +85,7 @@ const LastPostsSection: React.FC = () => {
                                                 <span className={'font-semibold'}>{post.time_read} min</span>
                                             </div>
                                             <h3 className={'font-bold text-[24px] mb-2'}>{post.title}</h3>
-                                            <Button content={'Read more'} filled={false} icon={true} />
+                                            <Button content={'Read more'} filled={false} icon={true} onClick={() => handleClick(post.id)} />
                                         </div>
                                     </article>
                                 )}

@@ -1,4 +1,5 @@
 require('./src/database.js');
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
@@ -21,8 +22,8 @@ require('./src/controllers/AuthorsController')(app);
 require('./src/controllers/SubscriptionsController')(app);
 
 const vapidKeys = {
-    publicKey: 'BEaRqXDrifbTXtEIMTasa0u3XpL6FDUORDt8a--5qLIu_bsMg90R-QkiviIJmjCF-LHQrXJSzHVoTq5UE_vwJqg',
-    privateKey: 'nQwd7cl5duQiyOiKeJahUXZY_C0ahB-ARh5NE5qI4Pc'
+    publicKey: `${process.env.PUBLIC_KEY}`,
+    privateKey: `${process.env.PRIVATE_KEY}`
 };
 
 webpush.setVapidDetails(
