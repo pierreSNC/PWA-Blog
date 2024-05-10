@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import Card from "../Card/Card";
 import CategoryTag from "../CategoryTag/CategoryTag";
 import Button from "../Button/Button";
 
@@ -83,16 +82,6 @@ const LastPostsSection: React.FC = () => {
                                     </article>
                                 )}
                             </div>
-                            // <div key={post.id} className={index === 0 ? 'row-span-3' : ''}>
-                            //     <Card
-                            //         id={post.id}
-                            //         thumbnail={post.thumbnail}
-                            //         category={post.categoryName}
-                            //         title={post.title}
-                            //         excerpt={post.excerpt}
-                            //         time_read={post.time_read}
-                            //     />
-                            // </div>
                         )) : ''}
                     </div>
                 </div>
