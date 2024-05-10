@@ -2,6 +2,7 @@ const Posts = require('../models/Posts');
 const Subscriptions = require('../models/Subscriptions');
 const Author = require('../models/Author');
 const webpush = require('web-push');
+require('dotenv').config();
 
 
 module.exports = (app) => {
@@ -64,7 +65,7 @@ module.exports = (app) => {
                 const payload = JSON.stringify({
                     title:  author_name + " a publié nouvel article ",
                     body: title,
-                    url: `http://localhost:49453/post/${id_post}`
+                    url: `${process.env.BASE_URL}post/${id_post}`
                 });
                 webpush
                     .sendNotification(subscription, payload)
