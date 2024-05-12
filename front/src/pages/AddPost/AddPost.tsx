@@ -48,7 +48,7 @@ const AddPost: React.FC = () => {
             id_category: categoryId,
             excerpt: excerpt,
             time_read: timeRead,
-            thumbnail: "https://www.buchmesse.de/files/styles/crop_image/public/media/image/MHillmer-JKlaus_%C2%A9Gregor-Thorand_catchingsmiles-net_2000.jpg?itok=Ev3OYV4x",
+            thumbnail: "https://via.placeholder.com/1000",
             is_popular: false
 
         };

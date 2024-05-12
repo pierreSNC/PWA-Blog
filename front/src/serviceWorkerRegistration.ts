@@ -76,7 +76,7 @@ const subscribeUser = async (registration:any) => {
 
 const saveSubscription = async (subscription:any) => {
   try {
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}subscription`, {
+    const response = await axios.post('http://localhost:3000/subscription', {
       subscription_json: JSON.stringify(subscription)
     });
     console.log('Subscription data saved to database:', response);
