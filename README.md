@@ -55,3 +55,5 @@ You must complete the .env file before run npm install.
 REACT_APP_API_URL=[URL of your API] # http://localhost:3000/
 REACT_APP_PUBLIC_KEY=
 ```
+
+Copy the url generate by npm install -g serve on your .env file in the api folder.
