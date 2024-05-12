@@ -21,6 +21,7 @@ npm install
 npm run db-init
 npm start
 ```
+You must import the pwa-blog.sql file on your datase before run npm start.
 
 You must complete the .env file with your own information before run npm install.
 
